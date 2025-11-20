@@ -43,7 +43,7 @@ global.channel = "https://whatsapp.com/channel/0029VbAc6cS002TEZ4r5261E"
 global.github = "https://github.com/The-King-Destroy/YukiBot-MD"
 global.gmail = "thekingdestroy507@gmail.com"
 global.ch = {
-ch1: "120363401404146384@newsletter"
+ch1: "120363401646371525@newsletter"
 }
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
