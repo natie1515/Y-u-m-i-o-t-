@@ -44,7 +44,7 @@ global.catalogo = fs.readFileSync('./lib/catalogo.jpg')
 global.group = "https://chat.whatsapp.com/HaKf6ezcwdbGzmH782eBal"
 global.community = "https://chat.whatsapp.com/G0kXqsteJFU74yrLtg79o6"
 global.channel = "https://whatsapp.com/channel/0029VbAc6cS002TEZ4r5261E"
-global.github = "https://github.com/The-King-Destroy/YukiBot-MD"
+global.github = "https://github.com/natie1515/Y-u-m-i-o-t-.git"
 global.gmail = "danivelasco745@gmail.com"
 global.ch = {
 ch1: "120363188537623366@newsletter"
