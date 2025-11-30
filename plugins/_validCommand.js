@@ -13,7 +13,11 @@ return false
 let chat = global.db.data.chats[m.chat]
 let settings = global.db.data.settings[this.user.jid]
 let owner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
-if (chat.modoadmin) return
+if (chat.modoadmin) {
+    const isAdmin = groupMetadata.participants.find(p => p.id === m.sender)?.admin
+    const isOwner = owner
+    if (!isAdmin && !isOwner) return
+}
 if (settings.self) return
 if (command === 'mute') return
 if (chat.isMute && !owner) return
