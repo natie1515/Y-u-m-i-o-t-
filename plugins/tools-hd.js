@@ -3,7 +3,17 @@ import FormData from 'form-data'
 
 const handler = async (m, { conn, usedPrefix }) => {
 const q = m.quoted || m
-const mime = (q.msg || q).mimetype || q.mediaType || ''
+
+// 🔥 FIX REAL PARA DETECTAR VIDEO 🔥
+const mime =
+  (q.msg?.mimetype) ||
+  q.mediaType ||
+  q?.mimetype ||
+  q?.quoted?.mimetype ||
+  q?.videoMessage?.mimetype ||
+  q?.msg?.videoMessage?.mimetype ||
+  '';
+
 if (!mime) return conn.reply(m.chat, '❀ Por favor, responde a una imagen o video con el comando.', m)
 
 const isImage = /image\/(jpe?g|png)/.test(mime)
@@ -20,7 +30,7 @@ await m.react('🕒')
 const url = await uploadToUguu(buffer)
 
 // =========================================================
-// IMAGEN → TU CÓDIGO ORIGINAL (NO LO TOCO)
+// IMAGEN → TU CÓDIGO ORIGINAL
 // =========================================================
 if (isImage) {
 const engines = [upscaleSiputzx, upscaleVreden]
@@ -38,7 +48,7 @@ return
 }
 
 // =========================================================
-// VIDEO → NUEVO (SIN TOCAR TU CÓDIGO ORIGINAL)
+// VIDEO → NUEVO (NO TOQUÉ TU CÓDIGO ORIGINAL)
 // =========================================================
 if (isVideo) {
 const engines = [videoSiputzx, videoVreden]
@@ -78,7 +88,7 @@ handler.tags = ['tools']
 export default handler
 
 // ========================
-// SUBIDA UGuu (igualito)
+// SUBIDA UGUU
 // ========================
 async function uploadToUguu(buffer) {
 const body = new FormData()
@@ -95,7 +105,7 @@ throw new Error(`Falló al parsear respuesta de Uguu.\n> ${text}`)
 }}
 
 // ========================
-// SERVIDORES IMAGEN (igual)
+// SERVIDORES IMAGEN
 // ========================
 async function upscaleSiputzx(url) {
 const res = await fetch(`${global.APIs.siputzx.url}/api/iloveimg/upscale?image=${encodeURIComponent(url)}&scale=4`)
@@ -115,7 +125,7 @@ return finalUrl
 upscaleVreden.engineName = 'Vreden'
 
 // ========================
-// SERVIDORES PARA VIDEO (NUEVO)
+// SERVIDORES VIDEO
 // ========================
 async function videoSiputzx(url) {
 const res = await fetch(`${global.APIs.siputzx.url}/api/video/upscale?url=${encodeURIComponent(url)}&scale=2`)
